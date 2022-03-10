@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spritesheets</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+
+    <style type="text/css">
+
+        /*
+            in css x axis is positive on right side and negative on left side
+            set width and height of containing element to height of spritesheet image and width of 1 "frame"(spritesheet-width divided number of frames) 
+            animate. 
+                set end background position to size of spritesheet and etc
+                set initial properties
+                set final properties
+                create bunch of 1/60 sec parts.
+                using linear assignment
+                    set each part to have increments/decrements of (final-initial/total parts). 
+                    run
+        */
+
+
+        #slime-sprite {
+            background-image: url('./spritesheets/slime-Sheet.png');
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+            image-rendering: pixelated;
+            width: 32px;
+            height: 29px;
+            animation: slime-sprite;
+            animation-duration: 2s;
+            animation-timing-function: steps(8);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes slime-sprite {
+            to {
+                background-position: -256px 0px;
+            }
+        }
+
+        /*
+            create a bunch of 1/60 sec parts.
+            assign each 1/60 sec part a bunch of properties at the time. 
+            steps(6), within the x created 1/60 parts, 
+                group them into y groups.
+                each group has the same properties within their 1/60 parts.
+            calculating last property - first property / (number of 1/60parts/number of groups)           
+
+
+            /*steps(x) applies to sections 
+            @keyframes animation {
+                pointa {
+
+                } x new frames starting from pointbeginning + 1 excluding initial
+                pointb {
+
+                }x frames from pont 
+                ...
+
+            }*/
+
+        #terminal-sprite {
+            background-image: url('./spritesheets/terminal_sprites.png');
+            width: 121.67px;
+            height: 87px; 
+            animation: terminal-sprite;
+            animation-duration: 2s;
+            animation-timing-function: steps(6);
+            background-position: 0px 0px;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes terminal-sprite {
+            to {
+                background-position: -730px 0px;
+            }
+        }
+
+        #character1-sprite {
+
+            background-image: url('./spritesheets/character-1.jpg');
+            width: 225px;
+            height: 367px;
+            background-position: 0px 0px;
+            animation: character1-sprite;
+            animation-duration: 1s;
+            animation-timing-function: steps(4);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes character1-sprite {
+
+            50% {
+                background-position: -900px 0px;
+            }
+
+            50.0000001% {
+                background-position: 0px 367px;
+            }
+
+            100% {
+                background-position: -900px 367px;
+            }
+        }
+
+        .sprite {
+            margin: 10px;
+            border: 0;
+        }
+
+        #torch-sprite {
+
+            background-image: url('./spritesheets/beautiful-cartoon-torch-sprite_52683-73186.webp');
+            background-repeat: no-repeat;
+            background-position: -25px 0px;
+            width: 125.45px;
+            height: 460px;
+            animation: torch-sprite ;
+            animation-duration: 1s;
+            animation-timing-function: steps(10);
+            animation-iteration-count: 1;
+            animation-iteration-count: infinite;
+            
+        }
+
+        @keyframes torch-sprite {
+
+            100% {
+                background-position: -1233.5px 0px;
+            }
+
+        }
+
+        /*
+            calculate height, width of containing element
+            calculate values of each frame to see result
+
+            full size of image = 624 by 417
+            frame width = 624/4 = 156;
+            frame height = 417/2 = 208.5;
+
+            new background position to make it fit - 10px 0px
+
+            animation frames for first - 4, intotal - 8
+            final frame optimally starting at background position 454px
+            so 4 frames, inital one at -10
+            every other is, (454 - 10)/3 = 148
+            frame 2 = frame 1 + 148 = 158px
+            frame 3 = 306
+            frame 4 = 454
+
+        */
+
+        #guy-walk-sprite {
+            background-image: url('./spritesheets/character-2.webp');
+            width: 156px;
+            height: 198.5px;
+            background-position: -10px -17px;
+            animation: guy-walk-sprite;
+            animation-duration: 1s;
+            animation-timing-function: steps(3);
+            animation-iteration-count: infinite;
+        }
+
+
+        @keyframes guy-walk-sprite {
+            50% {
+                background-position: -454px -17px
+            }
+
+            50.0000001% {
+                background-position: -10px 216.5px;
+            }
+
+            100% {
+                background-position: -454px 216.5px;
+            }
+        }
+
+        /*
+            animating girl walk sprite
+                - calculate then implement
+                4 frames, 
+                full width and height = 740 by 740
+                1 height frame = 740 / 2 = 370px by 370px
+                1 width frame = 740/4 = 185
+                optimum background-position-starting point is = 
+
+                total frames is 4 
+                initial frame has background position 0, as at this time
+                ending frame should have background-position of 534px
+                next 3 frames = (555)/3 = 185px
+                frame 2 = prev + 185 = 178
+                frame 3 = 356
+                frame 4 = 534
+
+                create 3 new frames, each with this
+        */
+
+        #girl-walk-sprite {
+            background-image: url('./spritesheets/character-2.jpg');
+            width: 185px;
+            height: 370px;
+            background-position: 0px 0px;
+            animation: girl-walk-sprite;
+            animation-duration: 1s;
+            animation-timing-function: steps(3);
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes girl-walk-sprite {
+            50% {
+                background-position: -534px 0px;
+            }
+
+            50.000001% {
+                background-position: 0px 400px;
+            }
+
+            100% {
+                background-position: -534px 400px;
+            }
+        }
+
+        /*
+            total frames are 6
+            total width and height of spritesheet = 1380 by 473
+            total width of frame = 1380 / 6 = 230
+            initial frame starts at background position = 0,0
+            final frame ends at background position = 1150
+            each frame position increased by a factor of 1150/5 = 230
+            frame 2 = prev + 230 = 230
+            frame 3 = 460
+            frame 4 = 690
+            frame 5 = 920
+            frame 6 = 1150
+            check each an see
+        */
+
+        #cauldron-sprite {
+            background-image: url('./spritesheets/cauldron.webp');
+            width: 230px;
+            height: 473px;
+            background-position: -8px 0px;
+            animation: cauldron-sprite;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: steps(6);
+
+        }
+
+        @keyframes cauldron-sprite {
+            to {
+                background-position: -1365.6px 0px;
+            }
+        }
+
+        #water-sprite {
+            background-image: url('./spritesheets/water-drop.jpg');
+            width: 316.67px ;
+            height: 353px;
+            background-position: 15px -20px;
+            animation: water-sprite;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(3);
+        }
+
+        @keyframes water-sprite {
+            50% {
+                background-position: -930.51px -20px;
+            }
+
+            50.000001% {
+                background-position: 15px -253px;
+            }
+
+            100% {
+                background-position: -930.51px -253px;
+            }
+        }
+
+        .sprite {
+            display: flex;
+            align-items: center;
+        }
+
+        .sprite div {
+            
+        }
+
+    </style>
+
+    </head>
+<body>
+    <div class="container-fluid d-flex flex-wrap justify-content-around">
+        
+            <div class="img-thumbnail sprite ">
+                <div id="slime-sprite"></div>
+            </div>
+
+            <div class="img-thumbnail sprite">
+                <div id="terminal-sprite"></div>
+            </div>
+
+            <div class="img-thumbnail sprite">
+                <div id="character1-sprite"></div>
+            </div>
+
+            <div class="img-thumbnail sprite">
+                <div id="torch-sprite"></div>
+            </div>
+
+            <div class="img-thumbnail sprite">
+                <div id="guy-walk-sprite"></div>
+            </div>      
+
+            <div class="img-thumbnail sprite">
+                <div id="girl-walk-sprite"></div>
+            </div> 
+
+            <div class="img-thumbnail sprite">
+                <div id="cauldron-sprite"></div>
+            
+            </div><div class="img-thumbnail sprite">
+                <div id="water-sprite"></div>
+            </div> 
+            
+        </div>
+
+    <script>
+    </script>
+</body>
+</html>
