@@ -266,7 +266,7 @@
             height: 353px;
             background-position: 15px -20px;
             animation: water-sprite;
-            animation-duration: 2s;
+            animation-duration: 0.5s;
             animation-iteration-count: infinite;
             animation-timing-function: steps(3);
         }
@@ -294,11 +294,25 @@
             
         }
 
+        .badge {
+            font-size: xx-large;
+            width: 75%;
+            background-color: cadetblue;
+            font-family:'Courier New', Courier, monospace;
+        }
+
     </style>
 
     </head>
 <body>
     <div class="container-fluid d-flex flex-wrap justify-content-around">
+
+        <div class="row col-12">
+            <h3 class="badge mx-auto my-4 py-4">
+                Spritesheet Animations
+            </h3>
+        </div>
+        
         
             <div class="img-thumbnail sprite ">
                 <div id="slime-sprite"></div>
